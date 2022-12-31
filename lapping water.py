@@ -65,8 +65,8 @@ class Particle:
         
         if self.pos[1]-self.adder < -self.amp*math.cos(math.radians(self.time*self.freq)):
             #border using circles
-            #pygame.draw.circle(win, self.colour, (self.pos[0], self.pos[1]), self.size)
-            #pygame.draw.circle(win, self.colour, (self.pos[1], self.pos[0]), self.size)
+            pygame.draw.circle(win, self.colour, (self.pos[0], self.pos[1]), self.size)
+            pygame.draw.circle(win, self.colour, (self.pos[1], self.pos[0]), self.size)
 
             #border using pixels
             #pygame.draw.rect(win, self.colour, (self.pos[0], self.pos[1], self.size,self.size))
