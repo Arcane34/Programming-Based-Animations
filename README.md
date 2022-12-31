@@ -35,7 +35,9 @@ Changing the values to always be positive or negative then would give different 
 The y velocity is a cos wave function and the x velocity is a sine squared function (with an offset of 1 as the wave like motion needed to be extended to be further away from the origin point.
 
 A single tentacle:
+
 ![](https://github.com/Arcane34/Programming-Based-Animations/blob/main/tentaclePrev1.gif)
 
 8 tentacles in different orientations:
+
 ![](https://github.com/Arcane34/Programming-Based-Animations/blob/main/tentaclePrev2.gif)
