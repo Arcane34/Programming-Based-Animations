@@ -16,11 +16,12 @@ class Bar:
         self.start = start
         self.width = 20
         self.height = 30
+        self.addedHeight = 100
 
     def draw(self):
-        pygame.draw.polygon(win, f1Colour, [[self.pos[0], self.pos[1]], [self.pos[0]+self.width, self.pos[1]+offset], [self.pos[0]+self.width, self.pos[1]+self.height+offset], [self.pos[0], self.pos[1]+self.height]])
-        pygame.draw.polygon(win, f2Colour, [[self.pos[0], self.pos[1]], [self.pos[0]-self.width, self.pos[1]+offset], [self.pos[0]-self.width, self.pos[1]+self.height+offset], [self.pos[0], self.pos[1]+self.height]])
-        pygame.draw.polygon(win, topColour, [[self.pos[0], self.pos[1]], [self.pos[0]+self.width, self.pos[1]+offset], [self.pos[0], self.pos[1]+2*offset], [self.pos[0]-self.width, self.pos[1]+offset]])
+        pygame.draw.polygon(win, f1Colour, [[self.pos[0], self.pos[1]-self.addedHeight], [self.pos[0]+self.width, self.pos[1]+offset-self.addedHeight], [self.pos[0]+self.width, self.pos[1]+self.height+offset+self.addedHeight], [self.pos[0], self.pos[1]+self.height+self.addedHeight]])
+        pygame.draw.polygon(win, f2Colour, [[self.pos[0], self.pos[1]-self.addedHeight], [self.pos[0]-self.width, self.pos[1]+offset-self.addedHeight], [self.pos[0]-self.width, self.pos[1]+self.height+offset+self.addedHeight], [self.pos[0], self.pos[1]+self.height+self.addedHeight]])
+        pygame.draw.polygon(win, topColour, [[self.pos[0], self.pos[1]-self.addedHeight], [self.pos[0]+self.width, self.pos[1]+offset-self.addedHeight], [self.pos[0], self.pos[1]+2*offset-self.addedHeight], [self.pos[0]-self.width, self.pos[1]+offset-self.addedHeight]])
 
 
 
