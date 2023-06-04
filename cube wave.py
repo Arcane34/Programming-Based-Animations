@@ -21,6 +21,7 @@ class Bar:
     def draw(self):
         self.time = (self.time + 2) %360
         self.addedHeight = math.sin(math.radians(self.time))*(height/3)
+        
         pygame.draw.polygon(win, f1Colour, [[self.pos[0], self.pos[1]-self.addedHeight], [self.pos[0]+width, self.pos[1]+offset-self.addedHeight], [self.pos[0]+width, self.pos[1]+height+offset+self.addedHeight], [self.pos[0], self.pos[1]+height+self.addedHeight]])
         pygame.draw.polygon(win, f2Colour, [[self.pos[0], self.pos[1]-self.addedHeight], [self.pos[0]-width, self.pos[1]+offset-self.addedHeight], [self.pos[0]-width, self.pos[1]+height+offset+self.addedHeight], [self.pos[0], self.pos[1]+height+self.addedHeight]])
         pygame.draw.polygon(win, topColour, [[self.pos[0], self.pos[1]-self.addedHeight], [self.pos[0]+width, self.pos[1]+offset-self.addedHeight], [self.pos[0], self.pos[1]+2*offset-self.addedHeight], [self.pos[0]-width, self.pos[1]+offset-self.addedHeight]])
@@ -35,7 +36,6 @@ def redrawWin():
     
     for bar in cube:
         bar.draw()
-    pygame.draw.circle(win,(255,0,0),(400,400),5)
     pygame.display.update()
     
 
@@ -43,15 +43,28 @@ cube = []
 n = 20
 yMove = 280
 xMove = 400
+
+
+
 for i in range(n):
+
     for j in range(i+1):
+        # timeOffset = 20*(i-j)  #weird half sine, half inphase wave motion
+        # timeOffset = i #sine motion bottom to top
+        timeOffset = i
+
         offsetX = j*(width*2) - (i*width)
-        cube.append(Bar(xMove+offsetX,yMove+i*(offset*-1),0))
+        cube.append(Bar(xMove+offsetX,yMove+i*(offset*-1),timeOffset*20))
 
 for i in range(n-1):
+    
+
     for j in range((n-1)-i):
+        timeOffset = 20+i
+
+
         offsetX = j*(width*2) - (((n-1)-i)*width) + width
-        cube.append(Bar(xMove+offsetX,yMove+((n-1)*offset*-1)+i*(offset*-1)-offset,0))
+        cube.append(Bar(xMove+offsetX,yMove+((n-1)*offset*-1)+i*(offset*-1)-offset,timeOffset*20))
 
 
 run = True
