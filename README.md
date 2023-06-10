@@ -1,6 +1,13 @@
 # Programming-Based-Animations
 A compilation of programming based animations that I have made in my spare time while playing around with particle movement and math.
 
+## Cube Wave
+This is an animation made to represent a 3d surface sectioned into cuboids that can be displaced according to impact forces that act on it. 
+
+For my first experiment I want to be able to generate the actual 3 dimensional surface itself and be able to move it according to a wave function, in this case a sine wave vertically downwards. 
+
+![](https://github.com/Arcane34/Programming-Based-Animations/blob/main/cubeWaveVertPrev.gif)
+
 ## General Particle
 This is a coding foundation for almost all of my particle based animation programs, essentially being a blueprint code that I start off with.
 
