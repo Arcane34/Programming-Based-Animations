@@ -34,8 +34,9 @@ class Bar:
 def redrawWin():
     win.fill((0,0,0))
     
-    for bar in cube:
-        bar.draw()
+    for section in cube:
+        for bar in section:
+            bar.draw()
     pygame.display.update()
     
 
@@ -44,30 +45,40 @@ n = 20
 yMove = 280
 xMove = 400
 
-
-
-
-
+time = 0
 
 for i in range(n):
+    temp = []
+    xMove -= width          #change the sign of this operation and xPos operation to generate from right to left or vice versa
+    yMove -= offset         #change the sign of this operation and yPos operation to generate from bottom to top or vice versa
+    for j in range(n):
+        xPos = xMove + width*(j)
+        yPos = yMove - j*(offset)
+        temp.append(Bar(xPos, yPos, time+j+i))
+    print(temp)
+    cube.append(temp)
 
-    for j in range(i+1):
-        # timeOffset = 20*(i-j)  #weird half sine, half inphase wave motion
-        # timeOffset = i #sine motion bottom to top
-        timeOffset = i
 
-        offsetX = j*(width*2) - (i*width)
-        cube.append(Bar(xMove+offsetX,yMove+i*(offset*-1),timeOffset*20))
 
-for i in range(n-1):
+# for i in range(n):
+
+#     for j in range(i+1):
+#         # timeOffset = 20*(i-j)  #weird half sine, half inphase wave motion
+#         # timeOffset = i #sine motion bottom to top
+#         timeOffset = i
+
+#         offsetX = j*(width*2) - (i*width)
+#         cube.append(Bar(xMove+offsetX,yMove+i*(offset*-1),timeOffset*20))
+
+# for i in range(n-1):
     
 
-    for j in range((n-1)-i):
-        timeOffset = 20+i
+#     for j in range((n-1)-i):
+#         timeOffset = 20+i
 
 
-        offsetX = j*(width*2) - (((n-1)-i)*width) + width
-        cube.append(Bar(xMove+offsetX,yMove+((n-1)*offset*-1)+i*(offset*-1)-offset,timeOffset*20))
+#         offsetX = j*(width*2) - (((n-1)-i)*width) + width
+#         cube.append(Bar(xMove+offsetX,yMove+((n-1)*offset*-1)+i*(offset*-1)-offset,timeOffset*20))
 
 
 run = True
