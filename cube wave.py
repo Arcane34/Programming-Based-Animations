@@ -1,6 +1,6 @@
 import pygame, sys, random, math
 
-#initializing pygame, window and framerate clock
+#initializing pygame, window, colours, constant values for dimensions and framerate clock
 pygame.init()
 width = (800,800)
 win = pygame.display.set_mode(width)
@@ -13,11 +13,13 @@ height = 14*9
 width = 14
 
 class Bar:
+    #initialising the bar starting coordinates, the added height they will have added on which will be used to display motion and time which is used to move that height every frame
     def __init__(self, x, y, start):
         self.pos = [x,y]
         self.addedHeight = 0
         self.time = start
 
+    # the draw function draws 3 polygon faces that represent the 3 visible faces of each bar, the time of each bar is incremented to function as an angle and the added height is adjusted appropriately
     def draw(self):
         self.time = (self.time + 2) %360
         self.addedHeight = math.sin(math.radians(self.time))*(height/3)
@@ -30,7 +32,7 @@ class Bar:
 
 
 
-
+# redraw window function that redraws every bar object onto the screen
 def redrawWin():
     win.fill((0,0,0))
     
