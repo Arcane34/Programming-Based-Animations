@@ -4,7 +4,7 @@ A compilation of programming based animations that I have made in my spare time 
 ## Cube Wave
 This is an animation made to represent a 3d surface sectioned into cuboids that can be displaced according to impact forces that act on it. 
 
-For my first experiment I want to be able to generate the actual 3 dimensional surface itself and be able to move it according to a wave function, in this case a sine wave vertically downwards. 
+For my first experiment I want to be able to generate the actual 3 dimensional surface itself and be able to move it according to a wave function, in this case a sine wave vertically upwards. 
 
 ![](https://github.com/Arcane34/Programming-Based-Animations/blob/main/cubeWaveVertPrev.gif)
 
