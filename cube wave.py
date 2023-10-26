@@ -14,19 +14,22 @@ width = 14
 
 class Bar:
     #initialising the bar starting coordinates, the added height they will have added on which will be used to display motion and time which is used to move that height every frame
-    def __init__(self, x, y, start):
+    def __init__(self, x, y, start, column, row):
         self.pos = [x,y]
         self.addedHeight = 0
         self.time = start
+        self.column = column
+        self.row = row
 
     # the draw function draws 3 polygon faces that represent the 3 visible faces of each bar, the time of each bar is incremented to function as an angle and the added height is adjusted appropriately
     def draw(self):
         self.time = (self.time + 2) %360
-        self.addedHeight = math.sin(math.radians(self.time))*(height/3)
-        
+        self.addedHeight = math.cos(math.radians(self.time))*(height/3)
         pygame.draw.polygon(win, f1Colour, [[self.pos[0], self.pos[1]-self.addedHeight], [self.pos[0]+width, self.pos[1]+offset-self.addedHeight], [self.pos[0]+width, self.pos[1]+height+offset+self.addedHeight], [self.pos[0], self.pos[1]+height+self.addedHeight]])
         pygame.draw.polygon(win, f2Colour, [[self.pos[0], self.pos[1]-self.addedHeight], [self.pos[0]-width, self.pos[1]+offset-self.addedHeight], [self.pos[0]-width, self.pos[1]+height+offset+self.addedHeight], [self.pos[0], self.pos[1]+height+self.addedHeight]])
         pygame.draw.polygon(win, topColour, [[self.pos[0], self.pos[1]-self.addedHeight], [self.pos[0]+width, self.pos[1]+offset-self.addedHeight], [self.pos[0], self.pos[1]+2*offset-self.addedHeight], [self.pos[0]-width, self.pos[1]+offset-self.addedHeight]])
+
+        #pygame.draw.circle(win, (0,255,0), self.pos,3) #debug
 
 
 
@@ -39,6 +42,8 @@ def redrawWin():
     for section in cube:
         for bar in section:
             bar.draw()
+
+    #pygame.draw.circle(win, (255,0,0), (400-14,280+14*(n/2)),3) #debug
     pygame.display.update()
     
 
@@ -49,6 +54,16 @@ xMove = 400
 
 time = 0
 
+# for i in range(n):
+#     temp = []
+#     xMove -= width          #change the sign of this operation and xPos operation to generate from right to left or vice versa
+#     yMove -= offset         #change the sign of this operation and yPos operation to generate from bottom to top or vice versa
+#     for j in range(n):
+#         xPos = xMove + width*(j)
+#         yPos = yMove - j*(offset)
+#         temp.append(Bar(xPos, yPos, time+j+i, i, j))
+#     cube.append(temp)
+
 for i in range(n):
     temp = []
     xMove -= width          #change the sign of this operation and xPos operation to generate from right to left or vice versa
@@ -56,10 +71,8 @@ for i in range(n):
     for j in range(n):
         xPos = xMove + width*(j)
         yPos = yMove - j*(offset)
-        temp.append(Bar(xPos, yPos, time+j+i))
-    print(temp)
+        temp.append(Bar(xPos, yPos, math.dist((xPos,yPos),(400-14,280+14*(n/2))), i, j))
     cube.append(temp)
-
 
 
 # for i in range(n):
