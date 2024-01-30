@@ -8,6 +8,12 @@ For my first experiment I want to be able to generate the actual 3 dimensional s
 
 ![](https://github.com/Arcane34/Programming-Based-Animations/blob/main/cubeWaveVertPrev.gif)
 
+## Sand Cellular Automata
+This is a cellular automata-based project that uses rules like John Conway's Game of Life to create cells that travel down the screen. The sand itself also holds the hue of its colour when initialised
+creating the patterns that can be seen in the preview below.
+
+![](https://github.com/Arcane34/Programming-Based-Animations/blob/main/sandPreview.gif)
+
 ## General Particle
 This is a coding foundation for almost all of my particle based animation programs, essentially being a blueprint code that I start off with.
 
