@@ -22,7 +22,7 @@ def redrawWin(board):
 
 
 #initialising conditions of board
-sizeOfPixel = 20
+sizeOfPixel = 5
 board = [[[0,sandCol] for i in range(width[0]//sizeOfPixel)] for j in range(width[1]//sizeOfPixel)]
 
 
@@ -88,7 +88,7 @@ while run:
         if 0 < mouse[1]//20 < len(board) and 0 < mouse[0]//20 < len(board[0]):
             colVal += 1
             col = ((colVal%360), 100, 100, 10)
-            board[mouse[1]//20][mouse[0]//20] = [1, col]
+            board[mouse[1]//sizeOfPixel][mouse[0]//sizeOfPixel] = [1, col]
 
     #redraw window function call
     board = redrawWin(board)
