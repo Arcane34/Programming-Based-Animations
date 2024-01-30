@@ -66,7 +66,7 @@ def boardUpdate(board):
 
 
 run = True
-
+brushSize = 5
 #game loop
 while run:
     
@@ -88,7 +88,12 @@ while run:
         if 0 < mouse[1]//20 < len(board) and 0 < mouse[0]//20 < len(board[0]):
             colVal += 1
             col = ((colVal%360), 100, 100, 10)
-            board[mouse[1]//sizeOfPixel][mouse[0]//sizeOfPixel] = [1, col]
+            coords = [mouse[1]//sizeOfPixel,mouse[0]//sizeOfPixel]
+            for k in range(brushSize*2):
+                for l in range(brushSize*2):
+                    if 0 < coords[0]-brushSize + k < len(board)-1 and 0 < coords[1]-brushSize + l < len(board[0])-1:
+                        if board[coords[0]-brushSize + k][coords[1]-brushSize + l][0] == 0:
+                            board[coords[0]-brushSize + k][coords[1]-brushSize + l] = [1, col]
 
     #redraw window function call
     board = redrawWin(board)
